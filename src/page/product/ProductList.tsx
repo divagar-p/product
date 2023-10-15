@@ -2,13 +2,13 @@ import SearchIcon from '@mui/icons-material/Search';
 import { Box, FormControl, InputAdornment, InputLabel, MenuItem, Select, TextField, Typography } from '@mui/material';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import LoadingSpinner from '../../component/LoadingSpinner';
 import Page from '../../component/Page';
 import ProductCard from '../../component/productList/ProductCard';
 import SkeletonProductItem from '../../component/productList/SkeletonProductItem';
+import { getCategories } from '../../redux/slice/category';
 import { getCategoryWiseProduct, getProduct, getSearchProduct } from '../../redux/slice/product';
 import { AppDispatch } from '../../redux/store';
-import { getCategories } from '../../redux/slice/category';
-import LoadingSpinner from '../../component/LoadingSpinner';
 
 interface productList {
     id: any;
@@ -89,7 +89,7 @@ function ProductList() {
             >
                 <TextField
                     size="small"
-                    placeholder="Search mail…"
+                    placeholder="Search product…"
                     value={searchValue ?? ''}
                     onChange={(e) => handleSearch(e.target.value)}
                     InputProps={{
