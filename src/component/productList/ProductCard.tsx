@@ -1,7 +1,6 @@
 import { Box, Card, Rating, Stack, Typography, styled } from '@mui/material';
 import numeral from 'numeral';
 import Image from './Image';
-import Label from './Label';
 
 
 const fCurrency = (number: number) => {
@@ -35,30 +34,14 @@ interface propsInterface {
     category?: string;
     thumbnail?: string;
     images?: string[];
-    status?: any;
   }
 }
 export default function ProductCard(props: propsInterface) {
-  const { id, title, thumbnail, price, description, status, rating, discountPercentage } = props.product;
+  const { id, title, thumbnail, price, description, rating, discountPercentage } = props.product;
 
   return (
     <Card key={id}>
       <Box sx={{ position: 'relative' }}>
-        {status && (
-          <Label
-            variant="filled"
-            color={(status === 'sale' && 'error') || 'info'}
-            sx={{
-              top: 16,
-              right: 16,
-              zIndex: 9,
-              position: 'absolute',
-              textTransform: 'uppercase',
-            }}
-          >
-            {status}
-          </Label>
-        )}
         <Image alt={title} src={thumbnail} ratio="1/1" />
       </Box>
 
